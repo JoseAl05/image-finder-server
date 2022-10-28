@@ -5,6 +5,7 @@ const path = require('path');
 const apiRouter = require("./routes/router");
 const bodyParser = require("body-parser");
 const cors = require('cors');
+const PORT = require('./config');
 
 
 
@@ -27,6 +28,6 @@ app.use(express.static(path.join(__dirname, "public")));
 //Principal Route
 app.use('/api', apiRouter);
 
-app.listen(4000, ()=>{
-    console.log(`Server listening on port ${4000}`)
+app.listen(PORT, ()=>{
+    console.log(`Server listening on port ${PORT}`)
 })
