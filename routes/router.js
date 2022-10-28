@@ -1,9 +1,8 @@
-const axios = require("axios");
 const pexels = require("pexels");
 const router = require("express").Router();
 require('dotenv').config();
 const ApiKey = process.env.PEXELS_API_KEY;
-console.log(ApiKey)
+
 const client = pexels.createClient(ApiKey);
 
 router.get("/getImages", async(req, res) => {
@@ -18,7 +17,7 @@ router.get("/getImages", async(req, res) => {
   if (!query || !page) {
     return res.status(400).send("Bad Request");
   }
-  console.log({query})
+
   const result = await client.photos.search({ query, page });
   const images = result.photos.map((image) => {
     return {
